@@ -1,15 +1,30 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body class="<%= message.tone %>">
-      <h1>instructions: Ask a question and then click the button</h1>
+<% layout('../layout') %>
+<style>
+    body {
+        <% if(message.tone==="positive") {
+            %>background-color: lightblue;
+            <%
+        }
+
+        else if(message.tone==="negative") {
+            %>background-color: lightcoral;
+            <%
+        }
+
+        else {
+            %>background-color: lightgreen;
+            <%
+        }
+
+        %>
+    }
+</style>
+<h1><%= name %> has shaken the Magic 8-Ball!</h1>
+<p>
+    <%= name %> asked the magic 8-Ball:
+    <%= question %>
+</p>
+<p>The magic 8-Ball responded with:
     <%= message.message %>
-    <br/>
-    <%= message.tone %>
-    <br/><br/>
-    <a href="/magic/8-ball"><button>Get your answer</button></a>
-  </body>
-</html>
+</p>
+<a href="/magic/question"><button>Ask another question!</button></a>

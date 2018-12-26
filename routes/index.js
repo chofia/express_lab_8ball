@@ -7,7 +7,7 @@ let adverbs = ["expressly", "explicitly", "definitely"];
 router.get('/', function(req, res, next) {
   res.render('index', { 
     adverb: adverbs[Math.floor(Math.random() * 3)],
-    isAwesome: true
+    name: req.cookies.name
   });
 });
 

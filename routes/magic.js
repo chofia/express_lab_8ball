@@ -95,16 +95,26 @@ function getRandomIntInclusive(min, max) {
 /* GET home page. */
 router.get('/8-ball', function (req, res, next) {
     let message = answers[getRandomIntInclusive(0, answers.length - 1)]
-    res.render('magic/8-ball', { title: "magic 8 ball", message: message });
+    res.render('magic/8-ball', { title: "magic 8 ball", message: message, name: req.cookies.name, question: req.cookies.question });
 });
 
-router.get('/question', function (req, res, next) {
-    res.render('magic/question', {question: null, name: null});
-});
+//show the form for the user to ask a question
+router.get('/question', function(req, res, next) {
+    var name = req.cookies.name;
+    res.clearCookie('question');
+    res.locals.question = null;
+    if (name) {
+      res.locals.name = name;
+    }
+    res.render('magic/question');
+  });
 
 // POST question
 router.post('/question', function(req, res, next) {
-    res.render("magic/question", {question: req.body.question, name: req.body.name})
+    res.cookie('name', req.body.name);
+    res.cookie('question', req.body.question);
+    // res.render("magic/question", {question: req.body.question, name: req.body.name})
+    res.redirect('/magic/8-ball');
   });
 
 module.exports = router;
