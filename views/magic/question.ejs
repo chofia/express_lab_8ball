@@ -1,0 +1,17 @@
+<% layout('../layout') %>
+
+<% if(name) {%>
+    <h1>Hello, <%= name %></h1>
+  <% } %>
+
+<% if(question) {%>
+  <h1>Your question is: <%= question %></h1>
+<% } else { %>
+  <h1>Ask me a yes/no question!</h1>
+  <!-- form goes here -->
+  <form class="question" action="/magic/question" method="post">
+    <input type="text" name="question" placeholder="Will I have chicken salad for dinner?">
+    <input type="text" name="name" placeholder="e.g. Eric">
+    <button type="submit">Ask a question!</button>
+  </form>
+<% } %>

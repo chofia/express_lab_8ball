@@ -98,4 +98,13 @@ router.get('/8-ball', function (req, res, next) {
     res.render('magic/8-ball', { title: "magic 8 ball", message: message });
 });
 
+router.get('/question', function (req, res, next) {
+    res.render('magic/question', {question: null, name: null});
+});
+
+// POST question
+router.post('/question', function(req, res, next) {
+    res.render("magic/question", {question: req.body.question, name: req.body.name})
+  });
+
 module.exports = router;
