@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="<%= message.tone %>">
+      <h1>instructions: Ask a question and then click the button</h1>
+    <%= message.message %>
+    <br/>
+    <%= message.tone %>
+    <br/><br/>
+    <a href="/magic/8-ball"><button>Get your answer</button></a>
+  </body>
+</html>
